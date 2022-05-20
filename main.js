@@ -58,12 +58,6 @@ const posts = [
 
 let container= document.getElementById('container');
 
-likes.addEventListener("click",
-function(){
-this.classList.add("like-button--liked");
-}
-)
-
 
 posts.forEach((element) =>{
 
@@ -103,7 +97,18 @@ posts.forEach((element) =>{
 
     `;
 
-
+    let likes = document.querySelectorAll(".like-button");
+    
+    for (let i = 0; i < likes.length; i++) {
+        likes[i].addEventListener("click",
+        function() {
+            likes[i].classList.add("like-button--liked");
+        }
+        )
+    }
 
 
 })
+
+
+
