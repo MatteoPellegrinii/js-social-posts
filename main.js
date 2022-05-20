@@ -67,40 +67,36 @@ posts.forEach((element) =>{
     post.classList = 'post';
     container.append(post);
 
-    let postHeader = document.createElement('div');
-    postHeader.classList = 'post__header';
-    post.append(postHeader);
+    post.innerHTML = `
+    <div class="post__header">
+        <div class="post-meta">                    
+            <div class="post-meta__icon">
+                <img class="profile-pic" src=${element.author.image} alt=${element.author.name}>                    
+            </div>
+            <div class="post-meta__data">
+                <div class="post-meta__author">${element.author.name} </div>
+                <div class="post-meta__time">${element.created} </div>
+            </div>                    
+        </div>
+    </div>
+    <div class="post__text">${element.content} </div>
+    <div class="post__image">
+        <img src=${element.media} alt="">
+    </div>
+    <div class="post__footer">
+        <div class="likes js-likes">
+            <div class="likes__cta">
+                <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
+                    <span class="like-button__label">Mi Piace</span>
+                </a>
+            </div>
+            <div class="likes__counter">
+                Piace a <b id="like-counter-1" class="js-likes-counter">${element.likes} </b> persone
+            </div>
+        </div> 
+    </div>            
 
-        let post__meta = document.createElement('div');
-        post__meta.classList = 'post-meta';
-        postHeader.append(post__meta);
-
-            let post__meta__icon = document.createElement('div');
-            post__meta__icon.classList = 'post-meta__icon';
-            post__meta.append(post__meta__icon);
-
-            let post__meta__data = document.createElement('div');
-            post__meta__data.classList = 'post-meta__data';
-            post__meta.append(post__meta__data);
-
-                let post__meta__author  = document.createElement('div');
-                post__meta__author.classList = 'post-meta__author';
-                post__meta__data.append(post__meta__author);
-
-                let post__meta__time  = document.createElement('div');
-                post__meta__time.classList = 'post-meta__time';
-                post__meta__data.append(post__meta__time);
-
-    let postText = document.createElement('div');
-    postText.classList = 'post__text';
-    post.append(postText);
-
-    let postImage = document.createElement('div');
-    postImage.classList = 'post__image';
-    post.append(postImage);
-
-    let postfooter = document.createElement('div');
-    postfooter.classList = 'post__footer';
-    post.append(postfooter);
+    `;
 
 })
