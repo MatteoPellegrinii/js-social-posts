@@ -97,18 +97,25 @@ posts.forEach((element) =>{
 
     `;
 
-    let likes = document.querySelectorAll(".like-button");
+    let mipiace = document.querySelectorAll(".js-like-button");
     
-    for (let i = 0; i < likes.length; i++) {
-        likes[i].addEventListener("click",
+    mipiace.forEach((button, index) =>{
+        button.addEventListener("click",
         function() {
-            likes[i].classList.add("like-button--liked");
+            button.classList.toggle("like-button--liked");
+            if(button.classList.contains("like-button--liked")) {
+                posts[index].likes++;
+            } else {
+                posts[index].likes--;
+            }
+
+            let likesCounter = document.getElementById("like-counter-" + posts[index].id);
+            likesCounter.innerText = posts[index].likes;
         }
         )
-    }
 
-
-})
-
+    } )
+    
+});
 
 
